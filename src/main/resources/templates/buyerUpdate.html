@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+<div class="container w-50 mt-5">
+  <h1>Update buyer</h1>
+  <div>Want to go back to products? <a href="/">Click here</a></div>
+  <div>Want to go back to buyers? <a href="/buyers">Click here</a></div>
+  <form method="get" th:action="@{/buyerUpdated/{id}(id=${UpdateElem.id})}">
+    <div class="mb-3">
+      <label for="InputBuyerFirstName" class="form-label">First Name</label>
+      <input th:value="${UpdateElem.firstName}" required name="firstName" type="text" class="form-control" id="InputBuyerFirstName">
+    </div>
+    <div class="mb-3">
+      <label for="InputBuyerLastName" class="form-label">Last Name</label>
+      <input th:value="${UpdateElem.lastName}" required name="lastName" type="text" class="form-control" id="InputBuyerLastName">
+    </div>
+    <div class="mb-3">
+      <label for="InputBuyerAge" class="form-label">Age</label>
+      <input th:value="${UpdateElem.age}" required name="age" type="number" class="form-control" id="InputBuyerAge">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</body>
+</html>

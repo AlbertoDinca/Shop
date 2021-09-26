@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+<div class="container w-50 mt-5">
+        <div>Want to add a product? <a href="/products">Click here</a></div>
+        <div>Want to become a buyer? <a href="/buyers">Click here</a> </div>
+        <div>Want to make a sale? <a href="/sales">Click here</a> </div>
+        <h1>Already posted Products</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Price</th>
+            <th scope="col">Product Quantity</th>
+            <th scope="col"> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="elem, props : ${products}">
+            <td th:text="${elem.productName}"></td>
+            <td th:text="${elem.productPrice}"></td>
+            <td th:text="${elem.productQuantity}"></td>
+            <td><a th:href="@{/update/{id}(id=${elem.id})}"> Update</a></td>
+            <td><a th:href="@{/delete/{id}(id=${elem.id})}"> Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

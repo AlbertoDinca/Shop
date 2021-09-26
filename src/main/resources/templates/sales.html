@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+<div class="container w-50 mt-5">
+    <div>Want to add a product? <a href="/products">Click here</a></div>
+    <div>Want to become a buyer? <a href="/buyers">Click here</a> </div>
+
+    <h1>Make a sale</h1>
+<form method="post" action="/saleSuccess">
+    <label for="prodId">Select product:</label>
+<select id="prodId" name="productsId" >
+    <option th:each="elem, props : ${products}" th:text="${elem.productName}" th:value="${elem.id}"></option>
+</select>
+    <label for="buyerId">Select buyer</label>
+    <select id="buyerId" name="buyersId">
+        <option  th:each="elem, props : ${buyer}" th:text="${elem.firstName}" th:value="${elem.id}"></option>
+    </select>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    <h1>Already made sales</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Sale id</th>
+        <th scope="col">Product Id</th>
+        <th scope="col">Seller Id</th>
+        <th scope="col"> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="elem, props : ${sales}">
+        <td th:text="${elem.id}"></td>
+        <td th:text="${elem.buyersId}"></td>
+        <td th:text="${elem.productsId}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
